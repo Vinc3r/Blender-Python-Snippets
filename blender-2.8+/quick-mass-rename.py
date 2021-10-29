@@ -1,6 +1,6 @@
 import bpy
 
-baseName = "myWonderfullName" #set your name here
+baseName = "myWonderfullName"  # set your name here
 
 """ This script will rename all selected objects and give you this kind of result:
         - myWonderfullName.000
@@ -19,4 +19,3 @@ for obj in [o for o in bpy.context.selected_objects if o.type == 'MESH']:
     else:
         obj.name = "{}.{}".format(baseName, number)
     number += 1
-    

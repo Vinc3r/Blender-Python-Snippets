@@ -23,7 +23,6 @@ from bpy.props import (
 )
 
 
-
 def do_something_on_meshes():
     total_tris_in_selection = 0
     total_verts_in_selection = 0
@@ -38,11 +37,12 @@ def do_something_on_meshes():
         thats_a_default_json.append({
             "name": obj.name,
             "verts": verts_count
-        })            
+        })
         bm.free()
 
     # my_data = {"hello":True, "cool" : [0,1,2,3]}
-    bpy.context.scene.thats_a_global_scene_variable = json.dumps(thats_a_default_json)
+    bpy.context.scene.thats_a_global_scene_variable = json.dumps(
+        thats_a_default_json)
 
     return {'FINISHED'}
 
@@ -73,7 +73,9 @@ class HelloJson_PT_HelloWorldPanel(bpy.types.Panel):
                 row.label(text=str(data[1]))
 
         row = layout.row()
-        row.operator("hellojson.do_something", text="Refresh", icon="FILE_REFRESH").action = True
+        row.operator("hellojson.do_something", text="Refresh",
+                     icon="FILE_REFRESH").action = True
+
 
 class HelloJson_OT_HelloWorldPanel(bpy.types.Operator):
     bl_idname = "hellojson.do_something"
@@ -87,6 +89,7 @@ class HelloJson_OT_HelloWorldPanel(bpy.types.Operator):
             self.action = False
         return {'FINISHED'}
 
+
 def register():
     bpy.utils.register_class(HelloJson_PT_HelloWorldPanel)
     bpy.utils.register_class(HelloJson_OT_HelloWorldPanel)
@@ -97,6 +100,7 @@ def unregister():
     del Scene.thats_a_global_scene_variable
     bpy.utils.unregister_class(HelloJson_OT_HelloWorldPanel)
     bpy.utils.unregister_class(HelloJson_PT_HelloWorldPanel)
+
 
 if __name__ == "__main__":
     register()

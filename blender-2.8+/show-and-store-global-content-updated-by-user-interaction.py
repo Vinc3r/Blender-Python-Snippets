@@ -16,6 +16,7 @@ from bpy.props import BoolProperty
 
 thats_a_default_array = []
 
+
 def do_something_on_meshes():
     total_tris_in_selection = 0
     total_verts_in_selection = 0
@@ -61,7 +62,9 @@ class Hello_PT_HelloWorldPanel(bpy.types.Panel):
                 row.label(text=str(data[1]))
 
         row = layout.row()
-        row.operator("hello.do_something", text="Refresh", icon="FILE_REFRESH").action = True
+        row.operator("hello.do_something", text="Refresh",
+                     icon="FILE_REFRESH").action = True
+
 
 class Hello_OT_HelloWorldPanel(bpy.types.Operator):
     bl_idname = "hello.do_something"
@@ -75,6 +78,7 @@ class Hello_OT_HelloWorldPanel(bpy.types.Operator):
             self.action = False
         return {'FINISHED'}
 
+
 def register():
     bpy.utils.register_class(Hello_PT_HelloWorldPanel)
     bpy.utils.register_class(Hello_OT_HelloWorldPanel)
@@ -83,6 +87,7 @@ def register():
 def unregister():
     bpy.utils.unregister_class(Hello_OT_HelloWorldPanel)
     bpy.utils.unregister_class(Hello_PT_HelloWorldPanel)
+
 
 if __name__ == "__main__":
     register()

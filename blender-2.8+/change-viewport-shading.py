@@ -12,6 +12,8 @@ for area in bpy.context.screen.areas:
         if space.type != 'VIEW_3D':
             # https://docs.blender.org/api/current/bpy.types.Space.html#bpy.types.Space.type
             continue
-        space.shading.type = 'SOLID' # https://docs.blender.org/api/current/bpy.types.View3DShading.html#bpy.types.View3DShading.type
-        space.shading.color_type = 'TEXTURE' # https://docs.blender.org/api/current/bpy.types.View3DShading.html#bpy.types.View3DShading.color_type
+        # https://docs.blender.org/api/current/bpy.types.View3DShading.html#bpy.types.View3DShading.type
+        space.shading.type = 'SOLID'
+        # https://docs.blender.org/api/current/bpy.types.View3DShading.html#bpy.types.View3DShading.color_type
+        space.shading.color_type = 'TEXTURE'
         viewports.append(space)

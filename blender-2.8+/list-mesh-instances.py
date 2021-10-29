@@ -9,7 +9,7 @@ for obj in [o for o in bpy.context.selectable_objects if o.type == 'MESH']:
     mesh = obj.data
     already_exists = False
     mesh_used_id = 0
-    
+
     # skipping non-instanced
     if mesh.users <= 1:
         continue
@@ -23,7 +23,7 @@ for obj in [o for o in bpy.context.selectable_objects if o.type == 'MESH']:
     if not already_exists:
         meshes_instanced.append(mesh)
         mesh_inst_id = len(meshes_instanced) - 1
-        
+
     obj_using_instance.append([obj, mesh_inst_id])
 
 for mesh_inst_id in range(len(meshes_instanced)):
@@ -35,4 +35,5 @@ for mesh_inst_id in range(len(meshes_instanced)):
     for obj in obj_using_instance_list:
         obj_using_instance_list_name += "{}, ".format(obj.name)
 
-    print("{} is used by: {}".format(meshes_instanced[mesh_inst_id].name, obj_using_instance_list_name)[:-2])
+    print("{} is used by: {}".format(
+        meshes_instanced[mesh_inst_id].name, obj_using_instance_list_name)[:-2])

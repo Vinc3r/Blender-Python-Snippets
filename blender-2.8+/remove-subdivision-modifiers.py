@@ -8,4 +8,5 @@ for obj in bpy.context.selected_objects:
     if len(obj.modifiers) > 0:
         for mod in obj.modifiers:
             if mod.type == 'SUBSURF':
+                bpy.context.view_layer.objects.active = obj
                 bpy.ops.object.modifier_remove(modifier=mod.name)

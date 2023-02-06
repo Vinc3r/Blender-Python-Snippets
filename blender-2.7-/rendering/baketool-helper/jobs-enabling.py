@@ -27,6 +27,12 @@ def setBakeToolJobsSamples():
             D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass[job_pass].samples = wantedSamples
     print("samples set to {}".format(wantedSamples))
     
+def setBakeToolJobsSize():
+    for job in range(len(D.scenes[0].BakeTool_Jobs.Jobs)):
+        for job_pass in range(len(D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass)):
+            D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass[job_pass].size = wantedSize
+    print("size set to {}".format(wantedSize))
+    
 def setBakeToolJobsDevice():
     for job in range(len(D.scenes[0].BakeTool_Jobs.Jobs)):
         D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass[0].render_device = device

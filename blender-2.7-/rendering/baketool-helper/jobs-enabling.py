@@ -23,7 +23,8 @@ def setBakeToolJobsEnable():
             
 def setBakeToolJobsSamples():
     for job in range(len(D.scenes[0].BakeTool_Jobs.Jobs)):
-        D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass[0].samples = wantedSamples
+        for job_pass in range(len(D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass)):
+            D.scenes[0].BakeTool_Jobs.Jobs[job].job_pass.Pass[job_pass].samples = wantedSamples
     print("samples set to {}".format(wantedSamples))
     
 def setBakeToolJobsDevice():
